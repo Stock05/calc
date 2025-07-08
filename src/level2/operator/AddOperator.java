@@ -1,6 +1,6 @@
-package level2;
+package level2.operator;
 
-public class AddOperator implements ArithmeticCalculator.Operator {
+public class AddOperator implements Operator {
 
     public AddOperator() {
 
