@@ -1,11 +1,9 @@
-package level2;
+package level3;
 
-import level2.operator.*;
+import level3.operator.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ArithmeticCalculator extends Calculator<Double> {
 
@@ -15,13 +13,18 @@ public class ArithmeticCalculator extends Calculator<Double> {
     private DivideOperator div;
     private final HashMap<Character, Operator> operators;
 
+    public enum operatorType {
+        ADD, SUBTRACT, MULTIPLY, DIVIDE
+    }
+    // enum을 이용할 방법을 모르겠습니다.
+
     public ArithmeticCalculator() {
          this.operators = new HashMap<>();
-         operators.put('+', new  AddOperator());
-         operators.put('-', new  SubtractOperator());
-         operators.put('*', new  MultiplyOperator());
-         operators.put('/', new  DivideOperator());
-         operators.put('%', new  ModOperator());
+         operators.put('+', new AddOperator());
+         operators.put('-', new SubtractOperator());
+         operators.put('*', new MultiplyOperator());
+         operators.put('/', new DivideOperator());
+         operators.put('%', new ModOperator());
     }
 
     // 해시맵에 연산자와 같이 객체를 등록 해놓고 연산자에 따라서 operator변수에 할당되는 객체가 달라짐
@@ -34,6 +37,16 @@ public class ArithmeticCalculator extends Calculator<Double> {
         }
         return operator.operate(num1, num2);
     }
+
+    public void getResultsGreaterThan(double num1) {
+
+        List<Double> overResults = results.stream()
+                .filter(result -> result > num1)
+                .toList();
+
+        overResults.forEach(System.out::println);
+    }
+
 //    public double calculate(int num1, int num2, char operator) {
 //        double result = 0;
 //        try {
@@ -65,4 +78,12 @@ public class ArithmeticCalculator extends Calculator<Double> {
 //        }
 //        return result;
 //    }
+
+
+
+
+
+
+
+
 }
